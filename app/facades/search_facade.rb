@@ -1,4 +1,4 @@
-class MemberSearchFacade
+class SearchFacade
 
   def initialize(house)
     @house = house

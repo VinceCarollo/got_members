@@ -1,9 +1,9 @@
 require 'rails_helper'
 
-RSpec.describe MemberSearchFacade do
+RSpec.describe SearchFacade do
 
   before :each do
-    @facade = MemberSearchFacade.new('stark')
+    @facade = SearchFacade.new('stark')
   end
 
   it "gets members of house" do

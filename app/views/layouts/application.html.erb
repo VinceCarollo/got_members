@@ -21,7 +21,7 @@
         <ul class="navbar-nav mr-auto">
           <li class="nav-item">
             <%= form_tag '/search', method: :get do %>
-              <%= select_tag 'house', options_for_select(['stark', 'greyjoy']) %>
+              <%= select_tag 'house', options_for_select(['Stark', 'Greyjoy', 'Lannister', 'Targaryen', 'Tyrell']) %>
               <%= submit_tag 'Get Members' %>
             <% end %>
           </li>

@@ -1,11 +1,17 @@
 class GotService
+  
   def house_members(house)
-    response = fetch("/api/v1/house/")
-    houses_by_id = JSON.parse(response.body, symbolize_names: true)
-    house_id = houses_by_id.find{|house_data| house_data[:name] == house.capitalize}[:id]
-
+    house_id = house_id(house)
     response = fetch("/api/v1/house/#{house_id}")
     JSON.parse(response.body, symbolize_names: true)
+  end
+
+  private
+
+  def house_id(house)
+    response = fetch("/api/v1/house/")
+    houses_by_id = JSON.parse(response.body, symbolize_names: true)
+    houses_by_id.find{|house_data| house_data[:name] == house.capitalize}[:id]
   end
 
   def conn
