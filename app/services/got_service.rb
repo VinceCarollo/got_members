@@ -1,12 +1,21 @@
 class GotService
   def house_members(house)
-    conn = Faraday.new(url: 'https://westerosapi.herokuapp.com') do |faraday|
-      faraday.adapter Faraday.default_adapter
-      faraday.params['api_key'] = ENV['API_KEY']
-    end
+    response = fetch("/api/v1/house/")
+    houses_by_id = JSON.parse(response.body, symbolize_names: true)
+    house_id = houses_by_id.find{|house_data| house_data[:name] == house.capitalize}[]
 
-    response = conn.get("/api/v1/house/#{house}")
-    member_data = JSON.parse(response.body, symbolize_names: true)
-    member_data[:data].first[:attributes][:members]
+    response = fetch("/api/v1/house/#{house_id}")
+    JSON.parse(response.body, symbolize_names: true)
+  end
+
+  def conn
+    Faraday.new(url: 'http://westeros-as-a-service.herokuapp.com') do |faraday|
+      faraday.adapter Faraday.default_adapter
+      faraday.headers['x_api_key'] = ENV['API_KEY']
+    end
+  end
+
+  def fetch(path)
+    conn.get(path)
   end
 end
