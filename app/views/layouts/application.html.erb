@@ -20,8 +20,8 @@
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
           <li class="nav-item">
-            <%= form_tag '/house' do %>
-              <%= select_tag 'house', options_for_select(['option1', 'option2']) %>
+            <%= form_tag '/search', method: :get do %>
+              <%= select_tag 'house', options_for_select(['stark', 'greyjoy']) %>
               <%= submit_tag 'Get Members' %>
             <% end %>
           </li>
