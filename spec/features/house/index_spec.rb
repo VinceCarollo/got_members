@@ -15,13 +15,13 @@ RSpec.describe "As a visitor" do
     it "can search for houses" do
       visit root_path
 
-      select "Greyjoy", :from => "house"
+      select "greyjoy", :from => "house"
       click_button "Get Members"
 
       expect(current_path).to eq(search_path)
       expect(current_url).to include('house=greyjoy')
 
-      expect(page).to have_content('7 members')
+      expect(page).to have_content('7 Members')
       expect(page).to have_css('.member', count: 7)
 
       within(first('.member')) do
