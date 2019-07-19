@@ -10,7 +10,7 @@ RSpec.describe "As a visitor" do
       click_button "Get Members"
 
       expect(current_path).to eq(search_path)
-      expect(current_url).to include('house=Greyjoy')
+      expect(current_url).to include('house=greyjoy')
 
       expect(page).to have_content('7 Members')
       expect(page).to have_css('.member', count: 7)
