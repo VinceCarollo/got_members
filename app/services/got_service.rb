@@ -1,4 +1,5 @@
 class GotService
+  
   def house_members(house)
     house_id = house_id(house)
     response = fetch("/api/v1/house/#{house_id}")
